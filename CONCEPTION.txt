@@ -1,0 +1,60 @@
+Conception :
+
+Voici les classes que nous avons crées lors de la réalisation du projet:
+
+-Nous avons crée les différentes aires du jeu à savoir:
+	* Village et Ferme (tuto)
+
+	* Route : dans cette aire nous avons ajouté des touffes d'herbe, 
+	une bombe qui dispose d'un détonateur qui se déclenche lors de votre entrée.
+
+	* RouteChateau: c'est ici que vous combattrez le DarkLord.
+
+	* Chateau: ouvrez la porte avec la clé.
+
+Ces aires sont crées dans le paquetage ARPGArea.
+
+-Les différents personnages:
+
+	* Le ARPGPlayer avec ses spécificités:
+	
+		Il a un inventaire contenant, des armes (bombes,arc,épée). Nous l'avons doté d'une énumération qui permet de décrire une 
+		état différent pour chaque objet courant qu'il utilise. Ceci nous permet de dessiner les animations convenables pour 	
+		chaque objet. Il intéragit avec son environnent (herbe,bombe,monstre, portes,...) soit en perdant des points de vie 
+		(dans le cas des monstres ou des bombes notamment), soit en changenat d'aire (portes) ou il a une autre action
+		(coupe l'herbe p.ex ou rammasse une pièce ou un coeur).
+
+	* La classe Monstre : Cette classe est très abstraite car les différents monstres se déplacent de différentes manières,
+	ont un représentation différente, pas les mêmes vulnérabiltés,.. Cependant, ils meurent tous de la même manière
+	(raison de la présence de l'animation pour la mort des monstres dans cette classe) et se déplacent tous de manière autonomne.
+
+	* Les sous-classe de monstre: 
+ 
+		! Les flameSkull : hérite de monstre pour les déplacement aléatoire + animation mort.
+
+		! Les logMonster : hérite de nonstre. Ils disposent de différents états (type énum).
+				   Lorsqu'ils sont en mode attaque, leur vitesse de déplacement s'accélère.
+
+		! Le DarkLord : hérite de monstre. Si vous vous en approchez trop, il va générer une flamme avant de se téléporter à
+				un endroit aléatoire. Il essaiera de se téléporter jusqu'à ce qu'il puisse entrer dans la cellule voulue.
+				Il dispose d'une énumération car il a plusieurs modes et chaque mode à des spécifications.
+
+
+Crées dans le paquetage ARPGActor car nous les considérons comme acteur du jeu, et ils se comportent en tant que tel.
+
+	* Les coins et les hearts: Aussi dans le paquetage ARPGActor. Ils héritent de CollectableAreaEntity car nous pouvons les collectionner.
+
+
+-Classe projectile : Classe qui modélise les projectiles, hérite de MovableAreaEntity, dans le paquetage ARPGActor.
+
+	*Arrow: hérite de projectile. Elle se déplace dans la map une fois lancée à l'aide de l'arc.
+
+-FireSpell: hérite de AreaEntity. Elle implémente interactor car elle peut elle même interagir avec sont environnement.
+
+
+Nous avons également une interface Flyable que la classe FlameSkull implémente.
+
+
+	
+	
+ 
